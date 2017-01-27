@@ -1,10 +1,11 @@
 module.exports = (endpoint, query, headers) => {
   const url = require('url');
-  const locator = url.parse(endpoint);
+  let locator;
   let lib;
 
   try {
     // get the protocol from the URL of the endpoint
+    locator = url.parse(endpoint);
     lib = require(locator.protocol.split(':')[0]);
   } catch (err){
     throw new Error(`Error in parsing the endpoints' protocol: ${err.message}`);
