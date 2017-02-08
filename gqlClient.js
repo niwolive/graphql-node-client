@@ -28,7 +28,7 @@ module.exports = (endpoint, query, headers) => {
   request.on('error', err => new Error(`The request halted: ${err.message}`));
 
   // Send the query
-  request.write(query);
+  request.write(JSON.stringify(query));
   request.end();
 }
 
